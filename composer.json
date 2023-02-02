@@ -1,18 +1,14 @@
 {
     "name": "minhyung/laravel-synology",
     "description": "Synology API",
-    "keywords": [
-        "minhyung",
-        "laravel-synology"
-    ],
+    "keywords": ["laravel", "synology"],
     "homepage": "https://github.com/overworks/laravel-synology",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
             "name": "Minhyung Park",
-            "email": "urlinee@gmail.com",
-            "role": "Developer"
+            "email": "urlinee@gmail.com"
         }
     ],
     "require": {
@@ -25,12 +21,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Minhyung\\LaravelSynology\\": "src"
-        }
+            "Minhyung\\Synology\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Minhyung\\LaravelSynology\\Tests\\": "tests"
+            "Minhyung\\Synology\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Minhyung\\LaravelSynology\\LaravelSynologyServiceProvider"
+                "Minhyung\\Synology\\ServiceProvider"
             ],
             "aliases": {
-                "LaravelSynology": "Minhyung\\LaravelSynology\\LaravelSynologyFacade"
+                "Synology": "Minhyung\\Synology\\Facades\\Synology"
             }
         }
     }

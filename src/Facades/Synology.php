@@ -1,13 +1,13 @@
 <?php
 
-namespace Minhyung\LaravelSynology;
+namespace Minhyung\Synology\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Minhyung\LaravelSynology\Skeleton\SkeletonClass
  */
-class LaravelSynologyFacade extends Facade
+class Synology extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class LaravelSynologyFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'laravel-synology';
+        return \Minhyung\Synology\Synology::class;
     }
 }

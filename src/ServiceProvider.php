@@ -1,10 +1,8 @@
 <?php
 
-namespace Minhyung\LaravelSynology;
+namespace Minhyung\Synology;
 
-use Illuminate\Support\ServiceProvider;
-
-class LaravelSynologyServiceProvider extends ServiceProvider
+class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -20,8 +18,9 @@ class LaravelSynologyServiceProvider extends ServiceProvider
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
+            $configPath = __DIR__ . '/../config/synology.php';
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('laravel-synology.php'),
+                $configPath => config_path('laravel-synology.php'),
             ], 'config');
 
             // Publishing the views.
@@ -50,11 +49,14 @@ class LaravelSynologyServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-synology');
+        $configPath = __DIR__.'/../config/synology.php';
+        $this->mergeConfigFrom($configPath, 'laravel-synology');
 
         // Register the main class to use with the facade
-        $this->app->singleton('laravel-synology', function () {
-            return new LaravelSynology;
+        $this->app->singleton(Synology::class, function () {
+            return new Synology;
         });
+
+        $this->app->alias(Synology::class, 'synology');
     }
 }
