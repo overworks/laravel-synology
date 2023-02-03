@@ -43,7 +43,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Minhyung\\Synology\\ServiceProvider"
+                "Minhyung\\Synology\\SynologyServiceProvider"
             ],
             "aliases": {
                 "Synology": "Minhyung\\Synology\\Facades\\Synology"

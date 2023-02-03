@@ -2,7 +2,7 @@
 
 namespace Minhyung\Synology;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider
+class SynologyServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
      * Bootstrap the application services.
