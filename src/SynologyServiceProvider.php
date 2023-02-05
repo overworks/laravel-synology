@@ -20,7 +20,7 @@ class SynologyServiceProvider extends \Illuminate\Support\ServiceProvider
         if ($this->app->runningInConsole()) {
             $configPath = __DIR__ . '/../config/synology.php';
             $this->publishes([
-                $configPath => config_path('laravel-synology.php'),
+                $configPath => config_path('synology.php'),
             ], 'config');
 
             // Publishing the views.
@@ -49,14 +49,14 @@ class SynologyServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $configPath = __DIR__.'/../config/synology.php';
-        $this->mergeConfigFrom($configPath, 'laravel-synology');
+        $configPath = __DIR__ . '/../config/synology.php';
+        $this->mergeConfigFrom($configPath, 'synology');
 
         // Register the main class to use with the facade
-        $this->app->singleton(Synology::class, function () {
+        $this->app->singleton(Synology::class, function ($app) {
             return new Synology;
         });
 
-        $this->app->alias(Synology::class, 'synology');
+        //$this->app->alias(Synology::class, 'synology');
     }
 }
